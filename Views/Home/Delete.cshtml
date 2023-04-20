@@ -1,0 +1,38 @@
+﻿@model LAB2.Models.DatabaseModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Data Base";
+}
+
+<h1>Delete</h1>
+
+<form asp-action="Delete" asp-controller="Home" method="post">
+    <h3>Are you sure you want to delete this?</h3>
+    <input asp-for="ID" type="hidden" />
+    <div>
+        <label asp-for="FirstName"></label>
+        <label asp-for="FirstName" class="form-control">@Model.FirstName</label>
+    </div>
+    <div>
+        <label asp-for="SecondName"></label>
+        <label asp-for="SecondName" class="form-control">@Model.SecondName</label>
+    </div>
+    <div>
+        <label asp-for="Age"></label>
+        <label asp-for="Age" class="form-control">@Model.Age</label>
+    </div>
+    <div>
+        <label asp-for="Phone"></label>
+        <label asp-for="Phone" class="form-control">@Model.Phone</label>
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <label asp-for="Email" class="form-control">@Model.Email</label>
+    </div>
+
+    <button type="submit">Delete</button>
+ 
+</form>
+
+<a href="@Url.Action("Index", "Home")">Back To List</a>
