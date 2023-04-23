@@ -7,12 +7,31 @@ namespace Lab_2.Controllers
 {
     public class HomeController : Controller
     {
-        
         private static List<DatabaseModel> database = new List<DatabaseModel>();
+
+        // Метод для внутреннего использования
+        private List<DatabaseModel> GetDatabase()
+        {
+            return database;
+        }
+
+        // Метод для внешнего использования
+        [HttpGet]
+        public IActionResult GetDatabase(bool isInternal = false)
+        {
+            if (isInternal)
+            {
+                return View("Index", GetDatabase());
+            }
+            else
+            {
+                return Json(GetDatabase());
+            }
+        }
 
         public IActionResult Index()
         {
-            return View(database);
+            return GetDatabase(true);
         }
 
         [HttpGet]
